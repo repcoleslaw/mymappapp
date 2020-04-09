@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "crs":{
+    "type": "name"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties":{
+        "POST_ID": 960,
+        "NAME": "Andy C."
+      },
+      "geometry":{
+        "type": "Point",
+        "coordinates": [43.6532,-79.3832],
+        "value": 25
+      }
+
+    }
+  ]
+}
