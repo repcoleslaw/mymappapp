@@ -6,30 +6,62 @@ import * as postData from "./data/data.json";
 import './App.css';
 import Toolbar from './components/Toolbar/Toolbar';
 import SideDrawer from './components/SideDrawer/SideDrawer';
+import Backdrop from './components/Backdrop/Backdrop';
 import Footer from './components/Footer/Footer';
 
 
 
-function App() {
 
-  const [viewport, setViewport] = useState({
-    latitude: 43.6532,
-    longitude: -79.3832,
-    zoom: 10,
-    width:"100vw",
-    height:'100vh'
-  });
+class App extends Component {
 
-  return (
+  state = {
+    sideDrawerOpen: false 
+  };
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideDrawerOpen: !prevState.SideDrawerOpen};
+    })
+  };
+
+  backdropClickHandler = () =>{
+    this.setState({sideDrawerOpen: false});
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        latitude: 37.8,
+        longitude: -122.4,
+        zoom: 14,
+        bearing: 0,
+        pitch: 0,
+        width:'100vw',
+        height:'100vh'
+      }
+    };
+  }
+
+  render(){
+    let sideDrawer;
+    let backDrop;
+
+
+    if (this.state.sideDrawerOpen){
+      backDrop = <Backdrop click={this.backdropClickHandler}/>
+    }
+
+    return (
     <div className="App">
-      <Toolbar/>
+      <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+      <SideDrawer show={this.state.sideDrawerOpen}/>
+      {backDrop}
       <ReactMapGL 
-        {...viewport} 
+        {...this.state.viewport} 
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         mapStyle="mapbox://styles/arrcole/ck8s41sia1kn81ijzj6hov34c"
-        onViewportChange={(viewport) => {
-          setViewport(viewport);
-        }}
+        onViewportChange={viewport => this.setState({viewport})}
       >
         {postData.features.map(post => (
           <Marker 
@@ -50,7 +82,8 @@ function App() {
       </ReactMapGL>
       <Footer></Footer>
     </div>
-  );
+    );
+  }
 }
 
 
