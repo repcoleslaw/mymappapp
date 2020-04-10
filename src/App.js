@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
-import './App.css';
-import Toolbar from './components/Toolbar/Toolbar';
-import Footer from './components/Footer/Footer';
-
+import React, {useState, Component} from 'react';
+import {geolocated} from 'react-geolocated';
 import ReactMapGL, {Marker} from "react-map-gl";
 import * as postData from "./data/data.json";
+
+import './App.css';
+import Toolbar from './components/Toolbar/Toolbar';
+import SideDrawer from './components/SideDrawer/SideDrawer';
+import Footer from './components/Footer/Footer';
+
+
 
 function App() {
 
@@ -13,12 +17,12 @@ function App() {
     longitude: -79.3832,
     zoom: 10,
     width:"100vw",
-    height:"100vh"
+    height:'100vh'
   });
 
   return (
     <div className="App">
-      <Toolbar></Toolbar>
+      <Toolbar/>
       <ReactMapGL 
         {...viewport} 
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -48,5 +52,8 @@ function App() {
     </div>
   );
 }
+
+
+
 
 export default App;
