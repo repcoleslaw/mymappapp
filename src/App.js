@@ -41,8 +41,8 @@ class App extends Component {
     super(props);
     this.state = {
       viewport: {
-        latitude: 37.8,
-        longitude: -122.4,
+        latitude: 47.8,
+        longitude: -79.4,
         zoom: 14,
         bearing: 0,
         pitch: 0,

@@ -5,7 +5,7 @@
 
   z-index: 200;
   background-color: #eee;
-  padding:10px 20px 40px;
+  padding:3em;
   border-radius: 8px;
   display:flex;
   flex-direction: column;
@@ -18,6 +18,12 @@
   transition: transform 0.5s ease-out;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
 
+}
+.modal-container h1{
+  margin:1rem;
+}
+.modal-container p{
+  margin:1rem;
 }
 
 .modal-closeButton{
@@ -36,6 +42,6 @@
 }
 
 .modal-container.open{
-  transform: translate(-50%,150%);
+  transform: translate(-50%,100%);
 
 }
