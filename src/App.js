@@ -77,7 +77,7 @@ class App extends Component {
       {/* Map Stuff */}
       <ReactMapGL 
         {...this.state.viewport} 
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+        mapboxApiAccessToken="pk.eyJ1IjoiYXJyY29sZSIsImEiOiJjazFpODM1eWowMGFnM2lwN2M1a3hheHczIn0.or7eL1mNGyvc2t1f8yypKA"
         mapStyle="mapbox://styles/arrcole/ck8s41sia1kn81ijzj6hov34c"
         onViewportChange={viewport => this.setState({viewport})}
         onResize={viewport => this.setState({viewport})}
