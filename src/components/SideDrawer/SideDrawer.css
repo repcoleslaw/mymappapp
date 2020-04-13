@@ -6,7 +6,7 @@
   top:0;
   left:0;
   width:70%;
-  max-width: 350px;
+  max-width: 400px;
   z-index: 200;
   transform:translateX(-100%);
   transition: transform 0.3s ease-out;
@@ -32,4 +32,16 @@
 .side-drawer a {
   color:blue;
   text-decoration: none;
+}
+
+.about_text{
+  padding:2em;
+}
+
+.about_text h1{
+  padding:2em;
+}
+
+.about_text p{
+  margin:1.5em;
 }

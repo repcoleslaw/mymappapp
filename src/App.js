@@ -6,6 +6,7 @@ import * as postData from "./data/data.json";
 import './App.css';
 import Toolbar from './components/Toolbar/Toolbar';
 import SideDrawer from './components/SideDrawer/SideDrawer';
+import Modal from './components/modal/Modal';
 import Backdrop from './components/Backdrop/Backdrop';
 import Footer from './components/Footer/Footer';
 
@@ -15,7 +16,8 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
 
   state = {
-    sideDrawerOpen: false 
+    sideDrawerOpen: false,
+    modalOpen: false 
   };
 
   drawerToggleClickHandler = () => {
@@ -24,8 +26,15 @@ class App extends Component {
     })
   };
 
+  modalToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {modalOpen: !prevState.modalOpen};
+    })
+  };
+
   backdropClickHandler = () =>{
-    this.setState({sideDrawerOpen: false});
+    this.setState({sideDrawerOpen: false})
+    this.setState({modalOpen: false});;
   };
 
   constructor(props) {
@@ -44,24 +53,35 @@ class App extends Component {
   }
 
   render(){
-    let sideDrawer;
+    
     let backDrop;
 
 
     if (this.state.sideDrawerOpen){
       backDrop = <Backdrop click={this.backdropClickHandler}/>
     }
+    if (this.state.modalOpen){
+      backDrop = <Backdrop click={this.backdropClickHandler}/>
+    }
 
     return (
     <div className="App">
-      <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
+      <Toolbar 
+      drawerClickHandler={this.drawerToggleClickHandler}
+      modalClickHandler={this.modalToggleClickHandler}/>
       <SideDrawer show={this.state.sideDrawerOpen}/>
+      <Modal show={this.state.modalOpen}/>
+
       {backDrop}
+
+      {/* Map Stuff */}
       <ReactMapGL 
         {...this.state.viewport} 
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         mapStyle="mapbox://styles/arrcole/ck8s41sia1kn81ijzj6hov34c"
         onViewportChange={viewport => this.setState({viewport})}
+        onResize={viewport => this.setState({viewport})}
+        
       >
         {postData.features.map(post => (
           <Marker 
@@ -80,7 +100,7 @@ class App extends Component {
 
         ))}
       </ReactMapGL>
-      <Footer></Footer>
+      <Footer/>
     </div>
     );
   }
