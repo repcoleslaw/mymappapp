@@ -8,6 +8,7 @@ import SideDrawer from './components/SideDrawer/SideDrawer';
 import Modal from './components/modal/Modal';
 import Backdrop from './components/Backdrop/Backdrop';
 import Footer from './components/Footer/Footer';
+import DynamicForm from './components/Form/Form';
 
 
 
@@ -109,6 +110,8 @@ class App extends Component {
 
         ))}
       </ReactMapGL>
+      <DynamicForm />
+
       <Footer/>
     </div>
     );

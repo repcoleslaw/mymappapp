@@ -1,0 +1,100 @@
+.form-button{
+  position:fixed;
+  z-index: 200;
+  bottom: 10vh;
+  right:5vw;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0;
+  line-height: 60px;  
+  width:60px;
+  height:60px;
+
+  border-radius: 30px;
+
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+
+
+}
+
+.form-button h1{
+  font-family: Arial, Helvetica, sans-serif;
+    
+  font-size: 35px;
+  color:grey;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  z-index: 200;
+  bottom: 10vh;
+  right:10vw;
+
+  min-height: 400px;
+  min-width: 300px;
+  border-radius: 30px;
+
+  padding:3rem;
+
+  background-color: white;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+
+
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+
+}
+.form p{
+  margin:1rem 0rem;
+}
+
+.form-button-close{
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 3px solid grey;
+  background: grey;
+  width:20px;
+  height:20px;
+  font-weight: bold;
+  align-self: flex-end;
+  text-align: center;
+  margin-bottom: 15px;
+  
+
+}
+
+.submitButton{
+
+  margin-top: 3em;
+  background: white;
+
+  display :inline-block;
+  padding:0.35em 1.2em;
+  border:.2em solid #EC008C;
+
+  border-radius:0.5em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:500;
+  color:#EC008C;
+  text-align:center;
+  transition: all 0.2s;
+
+  height:3em;
+}
+
+.submitButton:active,
+.submitButton:hover{
+  color:white;
+  background-color: #EC008C;
+}
