@@ -14,8 +14,6 @@ const toolbar = props =>(
       <div className="spacer"></div>
       <div className="toolbar_navigation-items">
         <ul>
-          <li>See the Response</li>
-          <li>Deploy the Response</li>
           <li><div className="modal-Button" onClick={props.modalClickHandler}>What Is This?</div></li>
           
         </ul>

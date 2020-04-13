@@ -1,6 +1,5 @@
 import React, {useState, Component} from 'react';
-import {geolocated} from 'react-geolocated';
-import ReactMapGL, {Marker} from "react-map-gl";
+import ReactMapGL, {Marker, NavigationControl, GeolocateControl} from "react-map-gl";
 import * as postData from "./data/data.json";
 
 import './App.css';
@@ -41,13 +40,15 @@ class App extends Component {
     super(props);
     this.state = {
       viewport: {
-        latitude: 47.8,
-        longitude: -79.4,
-        zoom: 14,
-        bearing: 0,
-        pitch: 0,
+        latitude: 43.65,
+        longitude: -79.38,
+        zoom: 8,
         width:'100vw',
-        height:'100vh'
+        height:'100vh',
+        maxZoon: 15,
+        touchZoom: true,
+        dragRotate: false,
+        touchRotate: false,
       }
     };
   }
@@ -80,9 +81,17 @@ class App extends Component {
         mapboxApiAccessToken="pk.eyJ1IjoiYXJyY29sZSIsImEiOiJjazFpODM1eWowMGFnM2lwN2M1a3hheHczIn0.or7eL1mNGyvc2t1f8yypKA"
         mapStyle="mapbox://styles/arrcole/ck8s41sia1kn81ijzj6hov34c"
         onViewportChange={viewport => this.setState({viewport})}
-        onResize={viewport => this.setState({viewport})}
         
+               
       >
+        
+        <div className='mapController'>
+          <NavigationControl/>
+          <GeolocateControl
+          positionOptions={{enableHighAccuracy:true}}
+          trackUserLocation={true}
+        />
+        </div>
         {postData.features.map(post => (
           <Marker 
           key={post.properties.POST_ID}
