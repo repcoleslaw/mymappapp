@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, {Component} from 'react';
 import ReactMapGL, {Marker, NavigationControl, GeolocateControl} from "react-map-gl";
 import * as postData from "./data/data.json";
 
