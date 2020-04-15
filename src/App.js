@@ -14,12 +14,35 @@ import DynamicForm from './components/Form/Form';
 
 
 class App extends Component {
-
-  state = {
-    sideDrawerOpen: false,
-    modalOpen: false, 
-    postOpen: false
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+    
+      data: [],
+      loading: false,
+      sideDrawerOpen: false,
+      modalOpen: false, 
+      postOpen: false,
+      viewport: {
+        latitude: 43.65,
+        longitude: -79.38,
+        zoom: 8,
+        width:'100vw',
+        height:'100vh',
+        maxZoon: 15,
+        touchZoom: true,
+        dragRotate: false,
+        touchRotate: false,
+      },
+    };
   };
+
+
+ 
+
+  
+
 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -45,21 +68,14 @@ class App extends Component {
     this.setState({postOpen: false});
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewport: {
-        latitude: 43.65,
-        longitude: -79.38,
-        zoom: 8,
-        width:'100vw',
-        height:'100vh',
-        maxZoon: 15,
-        touchZoom: true,
-        dragRotate: false,
-        touchRotate: false,
-      }
-    };
+
+
+  onSubmit = (model) =>{
+    model.id = +new Date();
+    alert(JSON.stringify(model));
+    this.setState({
+      data: [model, ...this.state.data]
+    })
   }
 
   render(){
@@ -88,7 +104,7 @@ class App extends Component {
       <ReactMapGL 
         {...this.state.viewport} 
         mapboxApiAccessToken="pk.eyJ1IjoiYXJyY29sZSIsImEiOiJjazFpODM1eWowMGFnM2lwN2M1a3hheHczIn0.or7eL1mNGyvc2t1f8yypKA"
-        mapStyle="mapbox://styles/arrcole/ck8s41sia1kn81ijzj6hov34c"
+        mapStyle="mapbox://styles/arrcole/ck91p8iek0w0o1iqpkr759tui"
         onViewportChange={viewport => this.setState({viewport})}
         
                
@@ -119,8 +135,25 @@ class App extends Component {
         ))}
       </ReactMapGL>
       <DynamicForm
-      postClickHandler={this.postToggleClickHandler}
-      show={this.state.postOpen} />
+        title = "POST The Good"
+        model = {[
+         {key: "name", label: "Name", props:{required: true}}, 
+         {key: "industry", label: "Industry", props:{required: true}}, 
+         {key: "serve", label: "Service", props:{required: true}}, 
+         {key: "details", label: "Additional Details"}, 
+         {key: "lat", label: "Latitude", type: "number", props:{required: true}}, 
+         {key: "long", label: "Longititude", type: "number", props:{required: true}}, 
+        ]}
+
+        onSubmit = {(model) => {this.onSubmit(model)}}
+          
+        postClickHandler={this.postToggleClickHandler}
+        show={this.state.postOpen} 
+      />
+      <pre>
+        
+      </pre>
+
 
       <Footer/>
     </div>
