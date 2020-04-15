@@ -1,3 +1,7 @@
+
+/* FORM BUTTON STUFF */
+
+
 .form-button{
   position:fixed;
   z-index: 200;
@@ -14,10 +18,29 @@
   height:60px;
 
   border-radius: 30px;
+  transition: transform 0.2s ease-in;
 
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+}
+.form-button.open{
+  position:fixed;
+  z-index: 200;
+  bottom: 10vh;
+  right:5vw;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0;
+  line-height: 60px;  
+  width:60px;
+  height:60px;
 
+  border-radius: 30px;
+  transform: rotate(45deg);
 
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
 }
 
 .form-button h1{
@@ -27,7 +50,12 @@
   color:grey;
 }
 
+/* FORM CONTAINER */
 .form-container{
+  display:none;
+}
+
+.form-container.open{
   display: flex;
   flex-direction: column;
   position:fixed;
@@ -44,7 +72,6 @@
   background-color: white;
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
 
-
 }
 
 .form{
@@ -54,22 +81,6 @@
 }
 .form p{
   margin:1rem 0rem;
-}
-
-.form-button-close{
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-  border-radius: 50%;
-  border: 3px solid grey;
-  background: grey;
-  width:20px;
-  height:20px;
-  font-weight: bold;
-  align-self: flex-end;
-  text-align: center;
-  margin-bottom: 15px;
-  
-
 }
 
 .submitButton{
@@ -91,10 +102,19 @@
   transition: all 0.2s;
 
   height:3em;
+  cursor: pointer;
 }
 
 .submitButton:active,
 .submitButton:hover{
   color:white;
   background-color: #EC008C;
+}
+
+.form-title{
+  font-size: 2em;
+}
+
+input{
+  padding:.5em;
 }

@@ -17,7 +17,8 @@ class App extends Component {
 
   state = {
     sideDrawerOpen: false,
-    modalOpen: false 
+    modalOpen: false, 
+    postOpen: false
   };
 
   drawerToggleClickHandler = () => {
@@ -32,9 +33,16 @@ class App extends Component {
     })
   };
 
+  postToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {postOpen: !prevState.postOpen};
+    })
+  };
+
   backdropClickHandler = () =>{
-    this.setState({sideDrawerOpen: false})
-    this.setState({modalOpen: false});;
+    this.setState({sideDrawerOpen: false});
+    this.setState({modalOpen: false});
+    this.setState({postOpen: false});
   };
 
   constructor(props) {
@@ -110,7 +118,9 @@ class App extends Component {
 
         ))}
       </ReactMapGL>
-      <DynamicForm />
+      <DynamicForm
+      postClickHandler={this.postToggleClickHandler}
+      show={this.state.postOpen} />
 
       <Footer/>
     </div>
